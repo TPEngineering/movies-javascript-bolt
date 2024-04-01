@@ -7,37 +7,52 @@ const api = require('./neo4jApi');
 // Within JavaScript, it's just another character, but it is an overloaded function in jQuery, in fact
 // this function is actually called jQuery, and $ is an alias.
 // https://api.jquery.com/jQuery/
-
-// $() in this case, has a single argument, function(){}. 
+// $() in this case, has a single argument, function(){}.
 // In this case, function(){} accepts no inputs, and just executes a number of different methods.
 $(function () {
-  renderGraph();
-  search();
 
-  $("#search").submit(e => {
-    e.preventDefault();
+    // renderGraph() is defined later in this file.
+    renderGraph();
+
+    // search() is defined later in this file.
     search();
-  });
+
+    // $().submit();
+    // jQuery searches through the DOM for any elements called #search and creates a new jQuery object
+    // that references these elements.
+    // .submit() submits the form (the result of the jQuery search). This method was deprecated in v3.3.
+    // The version this script assumes is at the bottom of the index.html file (v1.11.0).
+    // The .submit() input parameter is of the following type: Function(Event eventObject)
+    // => is the lamda operator, similar to that used in C#.
+    // preventDefault() is a member of the Event interface, which turns off the default listener behavior.
+    $("#search").submit(e => { e.preventDefault(); search(); });
+
 });
 
 function showMovie(title) {
   api
     .getMovie(title)
     .then(movie => {
-      if (!movie) return;
+        if (!movie) return;
+        $("#title").text(movie.title);
 
-      $("#title").text(movie.title);
-      $("#poster").attr("src","https://neo4j-documentation.github.io/developer-resources/language-guides/assets/posters/"+encodeURIComponent(movie.title)+".jpg");
-      const $list = $("#crew").empty();
-      movie.cast.forEach(cast => {
+        // .attr() is a jQuery method which sets and returns attributes and values of the selected elements.
+        // In this case, it sets the src attribute to the URL.
+        $("#poster").attr("src", "https://neo4j-documentation.github.io/developer-resources/language-guides/assets/posters/" + encodeURIComponent(movie.title) + ".jpg");
+
+        // $list is just an arbitrarily-chosen name for a variable.
+        // .empty() is a jQuery method which removes the contents of all the selected elements.
+        const $list = $("#crew").empty();
+
+        movie.cast.forEach(cast => {
         $list.append($("<li>" + cast.name + " " + cast.job + (cast.job === "acted" ? " as " + cast.role : "") + "</li>"));
-      });
-      $("#vote")
-        .unbind("click")
-        .click(function () {
-          voteInMovie(movie.title)
-        })
-    }, "json");
+        });
+
+        $("#vote")
+            .unbind("click")
+            .click(function () {voteInMovie(movie.title) } )
+    },
+    "json");
 }
 
 function voteInMovie(title) {

@@ -1,3 +1,4 @@
+// require() is a method introduced by Node.js to load a module (.js file)
 const api = require('./neo4jApi');
 
 $(function () {

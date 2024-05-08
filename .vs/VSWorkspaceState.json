@@ -1,7 +1,12 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\.github\\workflows",
+    "\\img",
+    "\\src",
+    "\\src\\assets",
+    "\\src\\models"
   ],
-  "SelectedNode": "\\C:\\Users\\thoma\\Source\\Repos\\TPEngineering\\movies-javascript-bolt",
+  "SelectedNode": "\\src\\neo4jApi.js",
   "PreviewInSolutionExplorer": false
 }

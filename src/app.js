@@ -6,7 +6,7 @@ const api = require('./neo4jApi');
 
 // $() The dollar sign ($) is used as a shortcut to the function document.getElementById().
 // The $ is being used as an alternative since this function references a DOM element if we
-// pass an element’s id and now is used frequently in JavaScript to serve the purpose.
+// pass an element's id and now is used frequently in JavaScript to serve the purpose.
 // Within JavaScript, it's just another character, but it is an overloaded function in jQuery, in fact
 // this function is actually called jQuery, and $ is an alias.
 // https://api.jquery.com/jQuery/

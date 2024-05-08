@@ -1,5 +1,6 @@
 const _ = require('lodash');
 
+/* This method makes a MovieCast object with the 'title' and 'cast' properties */
 function MovieCast(title, cast) {
   _.extend(this, {
     title: title,

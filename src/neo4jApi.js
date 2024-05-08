@@ -1,3 +1,6 @@
+// This appears to be the file which contains all the cypher queries as javascript functions.
+// The result of each function is to produce a record which can be consumed later.
+
 require('file-loader?name=[name].[ext]!../node_modules/neo4j-driver/lib/browser/neo4j-web.min.js');
 const Movie = require('./models/Movie');
 const MovieCast = require('./models/MovieCast');

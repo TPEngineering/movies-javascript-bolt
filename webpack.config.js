@@ -34,6 +34,8 @@ module.exports = {
   
   // No idea wtf these options are for.
   devtool: false,
+  
+  // When starting webpack in development mode, here is where the live app can be found (access via a browser):
   devServer: {
     static: buildDirectory,
     port: process.env.PORT || 8080
@@ -53,10 +55,10 @@ module.exports = {
     new HtmlWebpackPlugin({template: 'src/assets/index.html'}),
     // This allows global constants to be configured at compile time, applied to process.env keys.
     new Webpack.EnvironmentPlugin({
-      'NEO4J_URI': 'neo4j+s://demo.neo4jlabs.com',
-      'NEO4J_DATABASE': 'movies',
-      'NEO4J_USER': 'movies',
-      'NEO4J_PASSWORD': 'movies',
+      'NEO4J_URI': 'bolt://localhost:7687',
+      'NEO4J_DATABASE': 'neo4j',
+      'NEO4J_USER': 'neo4j',
+      'NEO4J_PASSWORD': 'moviesmovies',
       'NEO4J_VERSION': ''
     })
   ],

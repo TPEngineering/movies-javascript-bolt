@@ -98,13 +98,16 @@ function renderGraph() {
   const force = d3.layout.force()
     .charge(-200).linkDistance(30).size([width, height]);
 
-  const svg = d3.select("#graph").append("svg")
+    // FINALLY, THE REASON I ACTUALLY HAD TO PIVOT TO JAVASCRIPT:
+    const svg = d3.select("#graph").append("svg")
     .attr("width", "100%").attr("height", "100%")
     .attr("pointer-events", "all");
 
   api
+    // .getGraph() obtains the required 'nodes' and 'links' arrays.
     .getGraph()
     .then(graph => {
+      // 'force.nodes()' appears to be listed here, assuming 'simulation' is replaced by 'force': https://d3js.org/d3-force/simulation
       force.nodes(graph.nodes).links(graph.links).start();
 
       const link = svg.selectAll(".link")

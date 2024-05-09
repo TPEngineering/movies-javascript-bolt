@@ -4,6 +4,7 @@ const _ = require('lodash');
 /* This method appears to create an object 'this' which is then assigned 'id', 'duration' and 'votes'
 properties. */
 function Movie(_node) {
+  
   /* _.extend() 
   A method from underscore.js https://www.geeksforgeeks.org/underscore-js-_-extend-function/
   Used to create a copy of all properties of source objects (_node.properties) 

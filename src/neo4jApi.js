@@ -104,6 +104,7 @@ function voteInMovie(title) {
     });
 }
 
+// This is the important method! Puts the whole graph into two arrays, 'nodes' and 'rels' for consumption later.
 function getGraph() {
   const session = driver.session({database: database});
   return session.readTransaction((tx) =>
@@ -129,7 +130,7 @@ function getGraph() {
           rels.push({source, target})
         })
       });
-
+      //  This return statement is apparently using the "Revealing module pattern". 
       return {nodes, links: rels};
     })
     .catch(error => {
